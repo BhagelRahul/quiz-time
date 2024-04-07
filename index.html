@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizTime</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h2 id="quiz-question">
+            Question tag
+        </h2>
+        <ul>
+            <li>
+                <input type="radio" class="answer" id="option-a" name="options">
+                <label for="option-a" id="text-option-a"> option A</label>
+            </li>
+            <li>
+                <input type="radio" class="answer" id="option-b" name="options">
+                <label for="option-b" id="text-option-b"> option B</label>
+            </li>
+            <li>
+                <input type="radio" class="answer" id="option-c" name="options">
+                <label for="option-c" id="text-option-c"> option C</label>
+            </li>
+            <li>
+                <input type="radio" class="answer" id="option-d" name="options">
+                <label for="option-d" id="text-option-d"> option D</label>
+            </li>
+        </ul>
+       <button id="submit">Submit</button>
+    </div>
+    <script>
+        const quiz=[
+            {
+                question:"Who is the President of India?",
+                ans1text:"Yogi Adityanath",
+                ans2text:"Sarika Modi",
+                ans3text:"Narendra Modi",
+                ans4text:"Dropati Murma",
+                answer:"Dropati Murma",
+            },
+            {
+                question:"Who is the President of India?",
+                ans1text:"Yogi Adityanath",
+                ans2text:"Sarika Modi",
+                ans3text:"Narendra Modi",
+                ans4text:"Dropati Murma",
+                answer:"Dropati Murma",
+            },
+            {
+                question:"Who is the Prime Minister of India?",
+                ans1text:"Yogi Adityanath",
+                ans2text:"Sarika Modi",
+                ans3text:"Narendra Modi",
+                ans4text:"Dropati Murma",
+                answer:"Narendra Modi",
+            },
+            {
+                question:"Who is the Chief Minister of UP ?",
+                ans1text:"Yogi Adityanath",
+                ans2text:"Sarika Modi",
+                ans3text:"Narendra Modi",
+                ans4text:"Dropati Murma",
+                answer:"Yogi Adityanath",
+            },
+            {
+                question:"What is the other name of India?",
+                ans1text:"Bharat",
+                ans2text:"yugartha",
+                ans3text:"Sindhu",
+                ans4text:"Aryavarta",
+                answer:"Bharat",
+            },
+        ]
+        const question=document.getElementById("quiz-question");
+        console.log(question);
+        console.log(question.textContent)
+        const option_a=document.getElementById("text-option-a");
+        const option_b=document.getElementById("text-option-b");
+        const option_c=document.getElementById("text-option-c");
+        const option_d=document.getElementById("text-option-d");
+
+      const answerElement=document.querySelectorAll(".answer");
+
+        console.log(option_a);
+        console.log(option_b);
+        console.log(option_c);
+        console.log(option_d);
+        console.log(option_a.textContent);
+        console.log(option_b.textContent);
+        console.log(option_c.textContent);
+        console.log(option_d.textContent);
+       
+        let currentQuestion=0;
+        let score =0;
+
+        console.log(quiz[currentQuestion].question);
+        console.log(quiz[currentQuestion].ans1text);
+        console.log(quiz[currentQuestion].ans2text);
+        console.log(quiz[currentQuestion].ans3text);
+        console.log(quiz[currentQuestion].ans4text);
+
+        question.textContent=quiz[currentQuestion].question;
+        option_a.textContent=quiz[currentQuestion].ans1text;
+        option_b.textContent=quiz[currentQuestion].ans2text;
+        option_c.textContent=quiz[currentQuestion].ans3text;
+        option_d.textContent=quiz[currentQuestion].ans4text;
+
+            submit.addEventListener("click",()=>{
+                const checkedAns=document.querySelector('input[type="radio"]:checked');
+                console.log(checkedAns);
+                console.log(checkedAns.nextElementSibling.textContent);
+                if(checkedAns==null){
+                    alert("please select an answer");
+                }else{
+                if(checkedAns.nextElementSibling.textContent===quiz[currentQuestion].answer){
+                       score ++;
+                } 
+               
+                currentQuestion++;
+                if(currentQuestion<quiz.length){
+                    question.textContent=quiz[currentQuestion].question;
+                  option_a.textContent=quiz[currentQuestion].ans1text;
+                  option_b.textContent=quiz[currentQuestion].ans2text;
+                   option_c.textContent=quiz[currentQuestion].ans3text;
+                  option_d.textContent=quiz[currentQuestion].ans4text;
+                 checkedAns.checked=false;
+                }else{
+                        alert("your score is "+ score + " out of " + quiz.length);
+                       location.reload;
+                    }
+                }
+            
+     });
+              
+    </script>
+</body>
+</html>
